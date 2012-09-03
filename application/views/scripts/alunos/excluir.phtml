@@ -1,0 +1,54 @@
+<?php
+$this->title = utf8_encode("Excluir Alunos");
+$this->headTitle($this->title);
+?>
+<script type="text/javascript" src="<?php print $this->baseUrl() . '/js/alunos/excluir.js' ?>"></script>
+<form name="form" id="cursos" enctype="application/x-www-form-urlencoded" action="<?php echo $this->url(array('action'=>'excluir'));?>" method="post">
+    <input type="hidden" name="id" value="<?php echo $this->oAlunos['id'];?>" />
+    <table id="tbFormCursos" style="width: 100%;">
+        <tr>
+            <td>
+                <label for="universidadeId">Universidade:</label>
+            </td>
+            <td>
+                <?php foreach ($this->selectUniversidades as $key => $value) :
+                    if($this->oAlunos['universidade_id'] == $key)
+                        print $key.' - '.$value;
+                endforeach;?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="cursoId">Curso:</label>
+            </td>
+            <td>
+                <?php foreach ($this->selectCursosUniversidades as $key => $value) :
+                    if($this->oAlunos['curso_id'] == $key)
+                        print $key.' - '.$value;
+                endforeach;?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="matricula">Matricula:</label>
+            </td>
+            <td>
+                <?php print $this->oAlunos['matricula'];?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="nome">Nome:</label>
+            </td>
+            <td>
+                <?php print $this->oAlunos['nome'];?>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="aRight">
+                <input type="submit" name="cancelar" id="btCancelar" value="Cancelar" class="btn btn-primary">&nbsp;&nbsp;
+                <input type="button" name="excluir" id="btExcluir" class="btn btn-danger" value="Excluir">
+            </td>
+        </tr>
+    </table>
+</form>

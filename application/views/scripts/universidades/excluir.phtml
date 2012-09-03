@@ -1,0 +1,13 @@
+<?php 
+    $this->title = 'Excluir Universidades';
+    $this->headTitle($this->title);
+?>
+<script type="text/javascript" src="<?php print $this->baseUrl() . '/js/universidades/excluir.js' ?>"></script>
+<p>Nome: <?php echo $this->escape($this->oUniversidade['nome']);?></p>
+<form name="form" id="form" action="<?php echo $this->url(array('action'=>'excluir'));?>" method="post">
+    <div class="aRight">
+        <input type="hidden" name="id" value="<?php echo $this->oUniversidade['id'];?>" />
+        <input type="submit" name="cancelar" id="btCancelarExclusaoUniversidade" class="btn btn-primary" value="Cancelar" />&nbsp;&nbsp;
+        <input type="button" name="btExcluir" id="btExcluir" class="btn btn-danger" value="Excluir" />
+    </div>
+</form>

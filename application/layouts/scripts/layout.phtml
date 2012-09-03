@@ -1,0 +1,79 @@
+<?php
+    $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+    $this->headTitle()->setSeparator(' - ');
+    $this->headTitle(utf8_encode('Fabricio Nogueira - 142012ADP'));
+    print $this->doctype();
+    /*
+     * Foco link menu
+     */
+    switch ($this->classActive) {
+        case "universidades":
+            $this->universidadesActive = true;
+            break;
+        case "alunos":
+            $this->alunosActive = true;
+            break;
+        case "cursos":
+            $this->cursosActive = true;
+            break;
+        default:
+            $this->sobreActive = true;
+            break;
+    }
+?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <?php print $this->headMeta(); ?>
+        <?php print $this->headTitle(); ?>
+        <!--jquery ui-->
+        <script type="text/javascript" src="<?php print $this->baseUrl() . '/libraries/jquery-ui-1.8.22.custom/js/jquery-1.7.2.min.js' ?>"></script>
+        <script type="text/javascript" src="<?php print $this->baseUrl() . '/libraries/jquery-ui-1.8.22.custom/js/jquery-ui-1.8.22.custom.min.js' ?>"></script>
+        <?php print $this->headLink()->prependStylesheet($this->baseUrl() . '/libraries/jquery-ui-1.8.22.custom/css/custom-theme/jquery-ui-1.8.22.custom.css') ?>
+        <!--backbone-notifer-->
+        <script type="text/javascript" src="<?php print $this->baseUrl() . '/libraries/backbone.notifier/dependencies/json2.js'?>"></script>
+        <script type="text/javascript" src="<?php print $this->baseUrl() . '/libraries/underscore.js'?>"></script>
+        <script type="text/javascript" src="<?php print $this->baseUrl() . '/libraries/backbone.js'?>"></script>
+        <script type="text/javascript" src="<?php print $this->baseUrl() . '/libraries/backbone.notifier/js/backbone.notifier.js' ?>"></script>
+        <link rel="stylesheet/less" type="text/css" href="<?php print $this->baseUrl() . '/libraries/backbone.notifier/less/notifier-base.less' ?>">
+        <link rel="stylesheet/less" type="text/css" href="<?php print $this->baseUrl() . '/libraries/backbone.notifier/less/elements.less' ?>">
+        <link rel="stylesheet/less" type="text/css" href="<?php print $this->baseUrl() . '/libraries/backbone.notifier/less/notifier-variables.less' ?>">
+        <link rel="stylesheet/less" type="text/css" href="<?php print $this->baseUrl() . '/libraries/backbone.notifier/less/notifier-theme-plastic.less' ?>">
+        <!--bootstrap-->
+        <script type="text/javascript" src="<?php print $this->baseUrl() . '/libraries/bootstrap/js/bootstrap.min.js' ?>"></script>
+        <?php print $this->headLink()->prependStylesheet($this->baseUrl() . '/libraries/bootstrap/css/bootstrap.min.css') ?>
+        <?php print $this->headLink()->prependStylesheet($this->baseUrl() . '/libraries/bootstrap/css/bootstrap-responsive.min.css') ?>
+        <!--default-->
+        <?php print $this->headLink()->prependStylesheet($this->baseUrl() . '/css/default.css') ?>
+        <link rel="stylesheet/less" type="text/css" href="<?php print $this->baseUrl() . '/css/default.less' ?>">
+        <script type="text/javascript" src="<?php print $this->baseUrl() . '/js/default.js' ?>"></script>
+        <script type="text/javascript" src="<?php print $this->baseUrl() . '/libraries/less-1.3.0.min.js' ?>"></script>
+    </head>
+    <body>
+        <div id="principal">
+            <div id="cabecalho">
+                CABE&Ccedil;ALHO
+            </div>
+            <div id="menu" class="dropdown">
+                <p>MENU</p>
+                <ul aria-labelledby="dropdownMenu" role="menu" class="dropdown-menu main-menu">
+                    <li class="<?php print $this->alunosActive ? "active" : ""?>"><a href="<?php print $this->url(array('controller'=>'alunos','action'=>'grid'));?>" tabindex="-1"><i class="icon-user"></i>&nbsp;&nbsp;Alunos</a></li>
+                    <li class="<?php print $this->cursosActive ? "active" : ""?>"><a href="<?php print $this->url(array('controller'=>'cursos','action'=>'grid'));?>" tabindex="-1"><i class="icon-book"></i>&nbsp;&nbsp;Cursos</a></li>
+                    <li class="<?php print $this->universidadesActive ? "active" : ""?>"><a href="<?php print $this->url(array('controller'=>'universidades','action'=>'grid'));?>" tabindex="-1"><i class="icon-home"></i>&nbsp;&nbsp;Universidades</a></li>
+                    <li class="divider"></li>
+                    <li class="<?php print $this->sobreActive ? "active" : ""?>"><a id="sobre" href="#" tabindex="-1"><i class="icon-info-sign"></i>&nbsp;&nbsp;Sobre</a></li>
+                </ul> 
+            </div>
+            <div id="conteudo">
+                <div class="page-header">
+                    <h1><?php echo $this->escape($this->title);?>&nbsp;&nbsp;<small><?php echo $this->escape($this->subTitle);?></small></h1>
+                </div>
+                <div class="largura746">
+                    <?php print $this->layout()->content; ?>
+                </div>
+            </div>
+            <div id="rodape">
+                RODAP&Eacute;
+            </div>
+        </div>
+    </body>
+</html>

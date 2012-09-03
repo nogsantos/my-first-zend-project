@@ -1,0 +1,29 @@
+<?php
+$this->title = utf8_encode("Excluir Cursos");
+$this->headTitle($this->title);
+?>
+<script type="text/javascript" src="<?php print $this->baseUrl() . '/js/cursos/excluir.js' ?>"></script>
+<form name="form" id="cursos" enctype="application/x-www-form-urlencoded" action="<?php echo $this->url(array('action'=>'excluir'));?>" method="post">
+    <input type="hidden" name="id" value="<?php echo $this->oCursos['id'];?>" />
+    <table id="tbFormCursos" style="width: 100%;">
+        <tr>
+            <td>Universidade:</td>
+            <td>
+                <?php foreach ($this->selectUniversidades as $key => $value) :
+                    if($this->oCursos['universidade_id'] == $key)
+                        print $key.' - '.$value;
+                endforeach;?>
+            </td>
+        </tr>
+        <tr>
+            <td>Nome:</td>
+            <td><?php echo $this->oCursos['nome'];?></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="aRight">
+                <input type="submit" name="cancelar" id="btCancelar" value="Cancelar" class="btn btn-primary">&nbsp;&nbsp;
+                <input type="button" name="excluir" id="btExcluir" class="btn btn-danger" value="Excluir">
+            </td>
+        </tr>
+    </table>
+</form>

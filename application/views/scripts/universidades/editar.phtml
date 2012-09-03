@@ -1,0 +1,29 @@
+<?php
+$this->title = utf8_encode("Editar Universidade");
+$this->headTitle($this->title);
+?>
+<script type="text/javascript" src="<?php print $this->baseUrl() . '/js/universidades/editar.js' ?>"></script>
+<form name="form" id="form" id="universidade" enctype="application/x-www-form-urlencoded" action="<?php echo $this->url(array('action'=>'editar'));?>" method="post">
+    <input type="hidden" name="id" value="<?php echo $this->oUniversidade['id'];?>" />
+    <table id="tbFormUniversidades" style="width: 100%;">
+        <tr>
+            <td>
+                <label for="nome">Nome:</label>
+            </td>
+            <td>
+                <div id="inputNome" class="control-group">
+                    <label class="control-label" for="nome"><span class="label label-important">Erro</span>&nbsp;&nbsp;Campo Nome Obrigat&oacute;rio</label>
+                    <div class="controls">
+                        <input type="text" name="nome" id="nome" class="input-xxlarge" autocomplete="off" value="<?php echo $this->oUniversidade['nome'];?>" style="width: 100% !important;"><br />
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="aRight">
+                <input type="submit" name="cancelar" id="btCancelar" value="Cancelar" class="btn btn-primary">&nbsp;&nbsp;
+                <input type="button" name="salvar" id="btSalvar" value="Salvar" class="btn btn-success">
+            </td>
+        </tr>
+    </table>
+</form>

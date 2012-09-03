@@ -1,0 +1,45 @@
+<?php
+$this->title = utf8_encode("Relatório de Cursos Cadastrados");
+$this->headTitle($this->title);
+?>
+<?php if(!empty($this->oCursos)) : ?>
+    <?php if (count($this->menssagens)) : ?>
+        <?php foreach ($this->menssagens as $menssagens) : ?>
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert"><i class=" icon-remove"></i></button>
+                <?php echo $this->escape($menssagens); ?>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    <table id="cursosGrid" class="table table-hover table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Curso</th>
+            <th>Universidade</th>
+            <th>A&ccedil;&otilde;es</th>
+        </tr>
+            <?php foreach ($this->oCursos as  $oCursos) : ?>
+            <tr>
+                <td><?php echo $this->escape($oCursos->id)?></td>
+                <td><?php echo $this->escape($oCursos->nome)?></td>
+                <td><?php echo $this->escape($oCursos->universidade_id).' - '.$this->escape($oCursos->universidade)?></td>
+                <td class="aCenter">
+                    <a class="btn btn-success" href="<?php echo $this->url(array('controller'=>'cursos','action'=>'editar', 'id'=>$oCursos->id));?>">Editar</a>
+                    <a class="btn btn-danger" href="<?php echo $this->url(array('controller'=>'cursos','action'=>'excluir', 'id'=>$oCursos->id));?>">Excluir</a>
+                </td>
+            </tr>
+            <?php endforeach;?>
+            <tr>
+                <td colspan="4" class="aRight">
+                    <p><a class="btn btn-primary btn-large" href="<?php echo $this->url(array('controller'=>'cursos','action'=>'novo'));?>">Novo</a></p>
+                </td>
+            </tr>
+    </table>
+<?php else : ?>
+    <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert"><i class=" icon-remove"></i></button>
+        <h4>N&atilde;o h&aacute; Cursos cadastradas at&eacute; o momento.</h4><br/>
+        Para iniciar o cadastro, clique no bot&atilde;o abaixo.&nbsp;&nbsp;<i class="icon-hand-down"></i>
+    </div>
+    <p><a class="btn btn-large btn-block btn-primary" type="button" href="<?php echo $this->url(array('controller'=>'cursos','action'=>'novo'));?>">Cadastrar Cursos</a></p>
+<?php endif;?>

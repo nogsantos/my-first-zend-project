@@ -1,0 +1,18 @@
+<?php
+$this->title = utf8_encode("Mensagem de erro");
+$this->headTitle($this->title);
+?>
+<?php if (isset($this->exception)): ?>
+<div class="alert alert-error">
+    <h4><strong>Messagem:</strong></h4>
+    <?php echo $this->exception->getMessage() ?>
+</div>
+<div class="aRight">
+    <button id="btVoltar" class="btn btn-inverse"><i class=" icon-wrench"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Voltar</button>
+</div>
+<?php endif ?>
+<script type="text/javascript">
+    jQuery("#btVoltar").click(function(){
+        history.back(1);
+    });
+</script>

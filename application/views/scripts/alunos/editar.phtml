@@ -1,0 +1,81 @@
+<?php
+$this->title = utf8_encode("Editar Alunos");
+$this->headTitle($this->title);
+?>
+<script type="text/javascript" src="<?php print $this->baseUrl() . '/js/alunos/editar.js' ?>"></script>
+<form name="form" id="cursos" enctype="application/x-www-form-urlencoded" action="<?php echo $this->url(array('action'=>'editar'));?>" method="post">
+    <input type="hidden" name="ajax" id="ajax" value="<?php echo $this->url(array('action' => 'get-ajax-content', 'format' => 'json'))?>"  />
+    <input type="hidden" name="id" value="<?php echo $this->oAlunos['id'];?>" />
+    <table id="tbFormCursos" style="width: 100%;">
+        <tr>
+            <td>
+                <label for="universidadeId">Universidade:</label>
+            </td>
+            <td>
+                <div id="selectUniversidadeId" class="control-group">
+                    <div class="controls">
+                        <select name="universidade_id" id="universidadeId" class="select">
+                            <option value=""></option>
+                            <optgroup label="Selecione uma universidade abaixo..." >
+                            <?php foreach ($this->selectUniversidades as $key => $value) :?>
+                                <option value="<?php print $key?>" <?php print $this->oAlunos['universidade_id'] == $key ? 'selected ' : '' ?> ><?php print $key.' - '.$value?></option>
+                            <?php endforeach;?>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="cursoId">Curso:</label>
+            </td>
+            <td>
+                <div id="selectCursoId" class="control-group" style="position: relative;">
+                    <label class="control-label" for="cursoId"><span class="label label-important">Erro</span>&nbsp;&nbsp;Campo Curso Obrigat&oacute;rio</label>
+                    <div class="controls" style="position: relative;">
+                        <select name="curso_id" id="cursoId" class="select">
+                            <?php foreach ($this->selectCursosUniversidades as $key => $value) :?>
+                                <option value="<?php print $key?>" <?php print $this->oAlunos['curso_id'] == $key ? 'selected ' : '' ?> ><?php print $key.' - '.$value?></option>
+                            <?php endforeach;?>
+                        </select>
+                        <div id="mensagem" style="display: none;position: absolute;width:93%;top: -15px;" class="alert alert-info"></div>
+                    </div>
+                    <img border="0" align="absmiddle" style="position:absolute;float: left;top: 7px;display: none;" id="load" alt="" src=" <?php print $this->baseUrl() .'/images/ajax-loader_pequeno.gif'?>">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="matricula">Matricula:</label>
+            </td>
+            <td>
+                <div id="inputMatricula" class="control-group">
+                    <label class="control-label" for="nome"><span class="label label-important">Erro</span>&nbsp;&nbsp;Campo Matricula Obrigat&oacute;rio</label>
+                    <div class="controls">
+                        <input type="text" name="matricula" id="matricula" class="input" autocomplete="off" value="<?php echo $this->oAlunos['matricula'];?>" placeholder="Informe a matricula..."><br />
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="nome">Nome:</label>
+            </td>
+            <td>
+                <div id="inputNome" class="control-group">
+                    <label class="control-label" for="nome"><span class="label label-important">Erro</span>&nbsp;&nbsp;Campo Nome Obrigat&oacute;rio</label>
+                    <div class="controls">
+                        <input type="text" name="nome" id="nome" class="input" autocomplete="off" value="<?php echo $this->oAlunos['nome'];?>" placeholder="Informe o nome..."><br />
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="aRight">
+                <input type="submit" name="cancelar" id="btCancelar" value="Cancelar" class="btn btn-primary">&nbsp;&nbsp;
+                <input type="button" name="salvar" id="btSalvar" value="Salvar" class="btn btn-success">
+            </td>
+        </tr>
+    </table>
+</form>

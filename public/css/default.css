@@ -1,0 +1,55 @@
+/* 
+    Document   : default.css
+    Created on : Aug 29, 2012, 14:40:20 PM
+    Author     : Fabricio Nogueira
+    Description:
+        Folha de estilo padrão
+*/
+html,body,*{
+    margin: 0;
+    padding: 0;
+    font-family: verdana, Arial !important;
+    font-size: 12px;
+    color: #000;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+a{
+    color: blue;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+    text-shadow: none;
+}
+table{}
+table th{
+    background-color: #DDDDDD !important;
+    color: #666 !important;
+    font-weight: bold !important;
+    text-transform: uppercase;
+}
+form dt{
+    width: 100px;
+    display: block;
+    float: left;
+    clear: left;
+}
+form dd{
+    margin-left: 0;
+    float: left;
+}
+form input{
+    width: 100%;
+}
+
+form #submitbutton{
+    float: right;
+    right: 0;
+}
+.control-label{
+    display: none;
+}
+label{
+    cursor: pointer;
+    font-style: italic;
+}
