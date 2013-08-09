@@ -1,0 +1,13 @@
+{
+    "authors": [
+        {
+            "name": "Fabricio Nogueira",
+            "email": "nogsantos@gmail.com",
+            "homepage": "http://www.nogsantos.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "zendframework/zendframework1": "1.12.x"
+    }
+}
